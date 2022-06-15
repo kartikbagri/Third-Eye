@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, Redirect } from "react-router-dom";
+import AuthContext from "./context/auth-context";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import VehicleTracker from "./pages/VehicleTracker";
+import { useContext } from "react";
+import LandingPage from "./pages/LandingPage";
+import Dashboard from "./pages/Dashboard";
 
-function App() {
+const App = () => {
+  const authContext = useContext(AuthContext);
+  console.log(authContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Switch>
+        <Route path='/' exact><LandingPage /></Route>
+        {authContext.isAuthenticated && <Route path='/vehicle-tracker'><VehicleTracker /></Route>}
+        {authContext.isAuthenticated && <Route path='/dashboard'><Dashboard /></Route>}
+        {!authContext.isAuthenticated && <Route path='/login'><Login /></Route>}
+        {!authContext.isAuthenticated && <Route path='/signup'><Signup /></Route>}
+        <Route path='*'>
+          <Redirect to='/not-found' />
+        </Route>
+        {/* <Route path='/'></Route> */}
+      </Switch>
   );
 }
 
