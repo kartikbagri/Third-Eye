@@ -54,6 +54,12 @@
     font-size: 4rem;
     text-align: center;
     margin: 0;
+    text-decoration: none;
+}
+
+.available {
+    font-weight: bold;
+    color: #81e0ff;
 }
 
 @media screen and (max-width: 768px) {
@@ -83,6 +89,5 @@
 .text {
     margin: 5px;
     font-weight: bold;
-    color: #81e0ff;
     font-size: 1.3rem;
 }

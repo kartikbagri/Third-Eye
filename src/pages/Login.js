@@ -2,7 +2,8 @@ import { useRef, useContext } from 'react';
 import Button from "../components/Button";
 import Input from "../components/Input";
 import AuthContext from '../context/auth-context';
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import styles from './Login.module.css';
 
 
 const Login = () => {
@@ -48,26 +49,35 @@ const Login = () => {
 	};
 	
 	return (
-		<form>
-			<Input
-				label='Email'
-				type='email'
-				placeholder='Enter your Email'
-				ref={usernameRef}
-			/>
-			<Input
-				label='Password'
-				type='password'
-				placeholder='Enter your password'
-				ref={passwordRef}
-			/>
-			<Button 
-				type='submit'
-				onClick={loginHandler}
-			>
-				Login
-			</Button>
-		</form>
+		<div className={styles['container']}>
+			<div className={styles['form-container']}>
+				<h1 className={styles['title']}>Glad to see you!</h1>
+				<form onSubmit={loginHandler} className={styles['form']}>
+					<div className={styles['form-input-container']}>
+						<Input
+							className={styles['form-input']}
+							type='email'
+							placeholder='Email'
+							ref={usernameRef}
+						/>
+					</div>
+					<div className={styles['form-input-container']}>
+						<Input
+							className={styles['form-input']}
+							type='password'
+							placeholder='Password'
+							ref={passwordRef}
+						/>
+					</div>
+					<Button 
+						className={styles['btn']}
+						type='submit'
+					>
+						Login
+					</Button>
+				</form>
+			</div>
+		</div>
 	);
 };
 

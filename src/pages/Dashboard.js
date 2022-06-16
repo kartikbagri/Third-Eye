@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import ProductsList from "../components/Landing Page/ProductsList";
+import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   return (
-		<div>
-			<Link to='/vehicle-tracker' >Vehicle Tracker</Link>
-			<Link to='/person-tracker' >Person Tracker</Link>
+		<div className={styles['products-container']}>
+			<ProductsList />
 		</div>
 	);
 };
