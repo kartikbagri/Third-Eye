@@ -1,0 +1,46 @@
+.container {
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+@media screen and (max-width: 475px) {
+    .container {
+        padding: 40px 20px;
+        align-items: center;
+    }
+}
+
+.text {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.title {
+    font-size: 6rem;
+    margin: 0;
+}
+
+@media screen and (max-width: 475px) {
+    .title {
+        font-size: 5.5rem;
+    }
+}
+
+.dark {
+    color: #098F8C;
+}
+
+.login-btn {
+    padding: 15px 18px;
+    background-color: #098f8de0;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    width: 270px;
+    margin-top: 40px;
+}

@@ -14,6 +14,7 @@ const App = () => {
       <Switch>
         <Route path='/' exact><LandingPage /></Route>
         {authContext.isAuthenticated && <Route path='/vehicle-tracker'><VehicleTracker /></Route>}
+        {!authContext.isAuthenticated && <Route path='/vehicle-tracker'><Redirect to='/login' /></Route>}
         {authContext.isAuthenticated && <Route path='/dashboard'><Dashboard /></Route>}
         {!authContext.isAuthenticated && <Route path='/login'><Login /></Route>}
         {!authContext.isAuthenticated && <Route path='/signup'><Signup /></Route>}

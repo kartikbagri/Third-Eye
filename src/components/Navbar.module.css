@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    width: 100vw;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.links {
+    display: flex;
+    list-style: none;
+    flex: 4;
+    justify-content: space-evenly;
+}
+
+.link-item__link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.active {
+    border-bottom: 2px solid white;
+}

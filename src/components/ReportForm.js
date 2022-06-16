@@ -2,7 +2,6 @@ import { useState, Fragment } from "react";
 import Button from "./Button";
 import Input from "./Input";
 
-
 const ReportForm = () => {
 	
 	const [isLoading, setIsLoading] = useState(false);
