@@ -7,7 +7,7 @@ const Demo = () => {
 			<h1 className={styles['title']}>
                 Watch a <span className={styles['dark']}>live</span> DEMO
             </h1>
-			<YoutubeEmbed embedId='KSX4cwWRzis'/>
+			<YoutubeEmbed embedId='Lijxc6lu2zA'/>
 		</div>
 	)
 };
