@@ -1,12 +1,13 @@
 .navbar {
     display: flex;
     align-items: center;
-    padding: 50px;
+    padding: 25px;
     justify-content: space-between;
     position: fixed;
     z-index: 2;
     top: 0;
     width: 100vw;
+    /* background-color: rgba(0, 0, 0, 0.889); */
 }
 
 .logo-container {

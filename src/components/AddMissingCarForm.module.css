@@ -1,0 +1,29 @@
+.form-input {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    width: 50vw;
+    outline: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 50px 20px;
+}
+
+.btn {
+    background-color: #098F8C;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 40px;
+    margin-top: 30px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}

@@ -1,9 +1,9 @@
 .container {
-    padding: 0 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+    position: relative;
 }
 
 @media screen and (max-width: 475px) {
@@ -43,4 +43,20 @@
     font-weight: bold;
     width: 270px;
     margin-top: 40px;
+}
+
+.background-container {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background {
+    width: 100%;
+}
+
+.text-container {
+    padding-left: 80px;
 }

@@ -1,8 +1,8 @@
-import { useRef, useContext } from 'react';
+import { useRef, useContext, useState } from 'react';
 import Button from "../components/Button";
 import Input from "../components/Input";
 import AuthContext from '../context/auth-context';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
 
 
@@ -10,6 +10,9 @@ const Login = () => {
 	const history = useHistory();
 	const usernameRef = useRef();
 	const passwordRef = useRef();
+
+	const [error, setError] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const authContext = useContext(AuthContext);
 
@@ -19,6 +22,9 @@ const Login = () => {
 		const enteredEmail = usernameRef.current.value;
 		const enteredPassword = passwordRef.current.value;
 	
+		setError(null);
+		setIsLoading(true);
+
 		fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB_AACeYAFIIE1Ev9m0g-GLlkGIqeIL1f0', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -31,6 +37,7 @@ const Login = () => {
 			}
 		})
 		.then(res => {
+			setIsLoading(false);
 			if(res.ok) {
 				return res.json();
 			} else {
@@ -45,6 +52,7 @@ const Login = () => {
 		})
 		.catch(err => {
 			console.log(err);
+			setError(err.message);
 		});
 	};
 	
@@ -77,6 +85,8 @@ const Login = () => {
 					</Button>
 				</form>
 			</div>
+			{!isLoading && error && <p className={styles['error']}>{error}</p>}
+			{isLoading && <p className={styles['loading']}>Loading...</p>}
 		</div>
 	);
 };

@@ -5,6 +5,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .title {
@@ -86,4 +88,11 @@
     padding: 10px 40px;
     border-radius: 8px;
     margin-top: 20px;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
 }
