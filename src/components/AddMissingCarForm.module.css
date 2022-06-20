@@ -11,7 +11,7 @@
     justify-content: space-evenly;
     align-items: center;
     font-size: 1.5rem;
-    padding: 50px 20px;
+    padding: 20px;
 }
 
 .btn {
@@ -37,6 +37,7 @@
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .license-plate {
@@ -54,4 +55,9 @@
 
 .extender {
     margin-bottom: 20px;
+}
+
+.note {
+    color: grey;
+    font-size: 1rem;
 }

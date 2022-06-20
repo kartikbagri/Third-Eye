@@ -1,15 +1,67 @@
 import Input from "./Input";
-import {Fragment, useState } from 'react';
+import {Fragment, useState, useEffect, useRef, useCallback } from 'react';
 import styles from "./AddMissingCarForm.module.css";
 import Button from "./Button";
 import axios from 'axios';
 import Webcam from "react-webcam";
+import {Buffer} from 'buffer';
+
+const videoConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: "user"
+};
+
+var interval;
 
 const AddMissingCarForm = (props) => {
 
     const [file, setFile] = useState(null);
     const [licensePlate, setLicensePlate] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [openCam, setOpenCam] = useState(false);
+    const licenseRef = useRef(null);
+    
+    const webcamRef = useRef(null);
+  const capture = useCallback(
+    () => {
+      const imageSrc = webcamRef.current.getScreenshot();
+      const data = imageSrc.toString().replace(/^data:image\/png;base64,/, "");
+        const buf = Buffer.from(data, 'base64');
+        const blob = new Blob([buf.buffer], {type: 'image/png'}); 
+        const formData = new FormData();
+      formData.append("photograph", blob);
+      formData.append('latitude', 23)
+        formData.append('longitude', 43)
+        console.log(formData)
+      axios.post("http://127.0.0.1:5000/api/cars", formData)
+        .then(res => res.data
+        ).then(data => {
+            const licensePlate = data.licensePlateNumber;
+            if(licensePlate) {
+                setLicensePlate(licensePlate);
+            } else {
+                setLicensePlate('');
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },
+    [webcamRef]
+  );
+
+    useEffect(() => {
+        if(!openCam) {
+            clearInterval(interval);
+            return;
+        }
+        interval = setInterval(() => {
+            capture();
+        }, 2000);
+        
+    }, [openCam, capture])
+    
 
     const handleFileChange = (event) => {
         setFile(event.target.files);
@@ -36,39 +88,21 @@ const AddMissingCarForm = (props) => {
         })
     }
 
+    const submitIt = () => {
+        props.submitHandler(licenseRef.current.value);
+    }
+
     return  (
         <Fragment>
-            <form enctype="multipart" onSubmit={props.submitHandler} className={styles['form']}>
+            <form onSubmit={submitIt} className={styles['form']}>
+                <p className={styles['note']}>For viewing our maps feature, please use the following license plate <span className={styles['number']}>ka02mp9657</span></p>
                 <div className={styles['form-input']}>
                     <label className={styles['form-label']}>License Plate Number</label>
                     <Input
                         className={styles['form-input']}
                         type="text"
                         placeholder="License Plate Number"
-                    />
-                </div>
-                <div className={styles['form-input']}>
-                    <label className={styles['form-label']}>Model</label>
-                    <Input
-                        className={styles['form-input']}
-                        type="text"
-                        placeholder="Model"
-                    />
-                </div>
-                <div className={styles['form-input']}>
-                    <label className={styles['form-label']}>Color</label>
-                    <Input
-                        className={styles['form-input']}
-                        type="text"
-                        placeholder="Color"
-                    />
-                </div>
-                <div className={styles['form-input']}>
-                    <label className={styles['form-label']}>Last Location</label>
-                    <Input
-                        className={styles['form-input']}
-                        type="text"
-                        placeholder="Location"
+                        ref={licenseRef}
                     />
                 </div>
                 <Button
@@ -88,15 +122,33 @@ const AddMissingCarForm = (props) => {
                         onChange={handleFileChange}
                     />
                 </div>
-                {!isLoading && licensePlate && <div className={styles['license-plate']}>License Plate Number: <span className={styles['number']}>{String(licensePlate).toUpperCase()}</ span></div>}
-                {/* <Webcam /> */}
                 {!isLoading && <button 
                     className={styles['btn']}
                     onClick={handleSubmit}
-                >Upload</button>}
+                    >Upload</button>}
             </form>
             {isLoading && <p>Loading...</p>}
             <div className={styles['extender']}/>
+            <p className={styles['note']}>To test Camera Feature, which will be used in CCTVs</p>
+            {<Button
+                className={styles['btn']}
+                type="submit"
+                onClick={() => setOpenCam((prevState) => {
+                    return !prevState;
+                })}
+            >
+                Camera
+            </Button>}
+            
+            {openCam && <Webcam
+                audio={false}
+                height={520}
+                ref={webcamRef}
+                screenshotFormat="image/png"
+                width={1080}
+                videoConstraints={videoConstraints}
+            />}
+            {!isLoading && licensePlate && <div className={styles['license-plate']}>License Plate Number: <span className={styles['number']}>{String(licensePlate).toUpperCase()}</ span></div>}
         </Fragment>
     )
 }
