@@ -1,18 +1,14 @@
 import Map, {FullscreenControl, GeolocateControl, NavigationControl, Marker} from 'react-map-gl';
-// import mapboxgl from 'mapbox-gl';
+// import mapboxgl from "mapbox-gl"; // This is a dependency of react-map-gl even if you didn't explicitly install it
 
-
-// // The following is required to stop "npm build" from transpiling mapbox code.
-// // notice the exclamation point in the import.
-// // @ts-ignore
-// // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
-// mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+// eslint-disable-next-line import/no-webpack-loader-syntax
+// mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const MapWithLocations = () => {
     return (
         <div style={{width: '100vw', height: '70vh'}}>
             <Map
-                mapboxAccessToken='pk.eyJ1Ijoia2FydGlrYmFncmkiLCJhIjoiY2w0ZnVhdGx5MDBpYjNjczExNGtzNjB1MCJ9.mUBFT6LBpUtT94dQtVeTVQ'  
+                mapboxAccessToken='pk.eyJ1Ijoia2FydGlrYmFncmkiLCJhIjoiY2w0bXVnbm5nMDlxZjNqbnJkdXVrc3kzeSJ9.EeK2W46FPoYPPA7voQhrkQ'  
                 style={{width: '100vw', height: '100%'}}
                 initialViewState={{
                     longitude: -100,
@@ -20,8 +16,6 @@ const MapWithLocations = () => {
                     zoom: 3.5
                   }}
                 mapStyle="mapbox://styles/mapbox/streets-v11"
-                scrollZoom={true}
-                touchZoomRotate={true}
             >
             <FullscreenControl />
             <GeolocateControl />
