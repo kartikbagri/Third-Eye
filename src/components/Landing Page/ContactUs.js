@@ -7,7 +7,7 @@ const ContactUs = () => {
         <div id='contact-us' className={styles['container']}>
             <img className={styles['background']} src='/images/background3.png' alt='background'></img>
 			<h1 className={styles['title']}>
-                Let's <span className={styles['dark']}>Connect</span> !
+                Let's <span className={styles['dark']}>Connect</span>!
             </h1>
             <div className={styles['contact-container']}>
                 <form className={styles['contact-form']}>

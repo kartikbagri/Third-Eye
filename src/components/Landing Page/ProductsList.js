@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const ProductsList = () => {
     return (
-        <div className={styles['products-container']}>
-            <div className={styles['product']}>
+        <div className={`${styles['products-container']}`}>
+            <div className={`${styles['product']} ${styles['first-product']}`}>
                 <img className={styles['product-image']} src='images/v-trace.png' alt='v-trace'/>
                 <Link to='/vehicle-tracker' className={`${styles['product-title']} ${styles['available']}`}>V-TRACE</Link>
                 <p className={styles['product-description']}>Automated License Plate Recognition System for 

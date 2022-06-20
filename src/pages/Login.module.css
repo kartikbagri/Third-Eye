@@ -25,6 +25,12 @@
     background-color: #001b1a;
 }
 
+@media screen and (max-width: 765px) {
+    .form-container {
+        width: 80%;
+    }
+}
+
 .form {
     display: flex;
     flex-direction: column;

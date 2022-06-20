@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     overflow: hidden;
 }
@@ -13,11 +13,12 @@
     font-size: 5rem;
     text-align: center;
     margin: 0;
+    padding-top: 40px;
 }
 
 @media screen and (max-width: 765px) {
     .title {
-        font-size: 4rem;
+        font-size: 3.8rem;
     }
 }
 
@@ -44,6 +45,7 @@
 .form-heading {
     font-size: 3rem;
     margin: 0;
+    margin-bottom: 10px;
 }
 
 .contact-info {
@@ -60,7 +62,7 @@
     color: white;
     outline: none;
     font-size: 1rem;
-    
+    margin-bottom: 10px;
 }
 
 .message {
@@ -95,4 +97,38 @@
     top: 0;
     width: 100%;
     z-index: -1;
+}
+
+@media screen and (max-width: 1200px) {
+    .background {
+        height: 100%;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .background {
+        height: 100%;
+        width: auto;
+    }
+    .contact-container {
+        flex-direction: column;
+    }
+    .contact-info h2, p {
+        margin: 0;
+    }
+
+    .contact-info h2 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+    .contact-info p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .contact-info {
+        padding: 40px 0;
+    }
 }
