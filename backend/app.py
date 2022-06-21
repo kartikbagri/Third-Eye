@@ -81,3 +81,7 @@ def postData():
         'status': 'success',
         'message': 'Car added successfully'
     }
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World! welcome to Third Eye!'
