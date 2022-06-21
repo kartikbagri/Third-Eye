@@ -60,6 +60,13 @@ const Login = () => {
 		<div className={styles['container']}>
 			<div className={styles['form-container']}>
 				<h1 className={styles['title']}>Glad to see you!</h1>
+				<div className={styles['note']}>For testing purpose:
+				<p className={styles['note']}>
+					Username: kartik@gmail.com<br />
+					Password: 123456<br />
+					Note: You may manually go to /signup page and register yourself.
+				</p>
+				</div>
 				<form onSubmit={loginHandler} className={styles['form']}>
 					<div className={styles['form-input-container']}>
 						<Input

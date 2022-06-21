@@ -89,7 +89,7 @@ const AddMissingCarForm = (props) => {
     }
 
     const submitIt = () => {
-        props.submitHandler(licenseRef.current.value);
+        props.submitHandler(licenseRef.current.value.toLowerCase());
     }
 
     return  (
