@@ -20,7 +20,7 @@ const VehicleTracker = () => {
 		setIsLoading(true);
 		const formData = new FormData();
 		formData.append("licensePlate", licensePlate);
-		axios.post("http://127.0.0.1:5000/api/cars/find", formData)
+		axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars/find", formData)
 		.then(res => {
 			console.log(res.data.data);
 			return res.data.data

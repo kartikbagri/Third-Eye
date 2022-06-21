@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient('localhost', 27017)
+client = MongoClient(os.environ['DATABASE_URI'])
 
 db = client.test_database
 cars = db.cars

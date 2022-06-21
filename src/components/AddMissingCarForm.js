@@ -34,7 +34,7 @@ const AddMissingCarForm = (props) => {
       formData.append('latitude', 23)
         formData.append('longitude', 43)
         console.log(formData)
-      axios.post("http://127.0.0.1:5000/api/cars", formData)
+      axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars", formData)
         .then(res => res.data
         ).then(data => {
             const licensePlate = data.licensePlateNumber;
@@ -77,7 +77,7 @@ const AddMissingCarForm = (props) => {
             data.append('longitude', 43)
         }
         setIsLoading(true);
-        axios.post("http://127.0.0.1:5000/api/cars", data)
+        axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars", data)
         .then(res => res.data
         ).then(data => {
             setLicensePlate(data.licensePlateNumber);
