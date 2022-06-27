@@ -101,7 +101,6 @@ def findEncodings():
     results = []
     for face_encoding in face_encodings:
         results.append(face_encoding)
-    print(results)
     return results
 
 def findIfPresent(encoding):
@@ -124,7 +123,6 @@ def postReport():
         os.remove('latest.png')
         encoding = encoding[0]
         results = findIfPresent(encoding)
-        print(results)
         personData = {
             'name': request.form['name'],
             'encoding': encoding.tolist()
