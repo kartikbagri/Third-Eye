@@ -1,4 +1,3 @@
-// import CarLocations from "../components/CarLocations";
 import { useState } from "react";
 import MapWithLocations from "../components/MapWithLocations";
 import AddMissingCarForm from "../components/AddMissingCarForm";
@@ -10,8 +9,7 @@ const VehicleTracker = () => {
 	
 	const [activeForm, setActiveForm] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
-	const [locations, setLocations] = useState(null);
-	// const [licensePlate, setLicensePlate] = useState(null);
+	const [locations, setLocations] = useState(['28.597713703326125', '77.04909737144587']);
 	const [error, setError] = useState(null);
 
 	var foundLocations;
@@ -29,7 +27,7 @@ const VehicleTracker = () => {
 			foundLocations = data.map(car => {
 				return [car[0], car[1]];
 			});
-			setLocations(foundLocations);
+			setLocations([...foundLocations]);
 		}).catch(err => {
 			console.log(err);
 			setError(err);
@@ -46,7 +44,7 @@ const VehicleTracker = () => {
 			{!isLoading && error && <p className={styles['error']}>{error}</p>}
 			{!isLoading && !activeForm && <MapWithLocations locations={locations}/>}
 			{!isLoading && !activeForm && locations && locations.length===0 && <p className={styles['empty-locations']}>Car hasn't been detected but car added for Sherlock!</p>}
-			{!activeForm && <Button onClick={() => setActiveForm(true)}>Add a missing car</Button>}
+			{!activeForm && <Button className={styles['btn']} onClick={() => setActiveForm(true)}>Add a missing car</Button>}
 		</div>
 
 	)

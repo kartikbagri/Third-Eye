@@ -15,7 +15,6 @@ db = client.test_database
 cars = db.cars
 
 def findPlateNumbers():
-    from pprint import pprint
     regions = ['in']
     with open('latest.png', 'rb') as fp:
         response = requests.post(
@@ -24,12 +23,15 @@ def findPlateNumbers():
             files=dict(upload=fp),
             headers={'Authorization': 'Token ad63d5b9dfe9f48ff449c1f6fcf75e216c7ce8c4'}
         )
-    results = response.json()['results']
-    licensePlates = []
-    for result in results:
-        licensePlates.append(result['plate'])
-    print(licensePlates)
-    return licensePlates
+    try:
+        results = response.json()['results']
+        licensePlates = []
+        for result in results:
+            licensePlates.append(result['plate'])
+        print(licensePlates)
+        return licensePlates
+    except:
+        return []
 
 
 @app.route('/api/cars', methods=['POST'])
@@ -38,7 +40,6 @@ def postCars():
     photograph.save(secure_filename('latest.png'))
     plateNumbers = findPlateNumbers()
     os.remove('latest.png')
-    print(datetime.datetime.now())
     for plateNumber in plateNumbers:
         carData = {
             'licensePlateNumber': plateNumber,
@@ -62,7 +63,6 @@ def getCars():
     plate = []
     for car in data:
         plate.append((car['latitude'], car['longitude']))
-    print(plate)
     return {
         'status': 'success',
         'data': plate

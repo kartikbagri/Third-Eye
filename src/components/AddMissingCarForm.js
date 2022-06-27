@@ -17,7 +17,7 @@ var interval;
 const AddMissingCarForm = (props) => {
 
     const [file, setFile] = useState(null);
-    const [licensePlate, setLicensePlate] = useState('');
+    const [licensePlate, setLicensePlate] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [openCam, setOpenCam] = useState(false);
     const licenseRef = useRef(null);
@@ -25,23 +25,24 @@ const AddMissingCarForm = (props) => {
     const webcamRef = useRef(null);
   const capture = useCallback(
     () => {
-      const imageSrc = webcamRef.current.getScreenshot();
-      const data = imageSrc.toString().replace(/^data:image\/png;base64,/, "");
+        const imageSrc = webcamRef.current.getScreenshot();
+        const data = imageSrc.toString().replace(/^data:image\/png;base64,/, "");
         const buf = Buffer.from(data, 'base64');
         const blob = new Blob([buf.buffer], {type: 'image/png'}); 
         const formData = new FormData();
-      formData.append("photograph", blob);
-      formData.append('latitude', 23)
+        formData.append("photograph", blob);
+        formData.append('latitude', 23)
         formData.append('longitude', 43)
         console.log(formData)
-      axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars", formData)
-        .then(res => res.data
-        ).then(data => {
+        axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars", formData)
+        .then(res => res.data)
+        .then(data => {
+            console.log(data)
             const licensePlate = data.licensePlateNumber;
             if(licensePlate) {
                 setLicensePlate(licensePlate);
             } else {
-                setLicensePlate('');
+                setLicensePlate(null);
             }
         })
         .catch(err => {
@@ -65,7 +66,6 @@ const AddMissingCarForm = (props) => {
 
     const handleFileChange = (event) => {
         setFile(event.target.files);
-        console.log(file)
     }
 
     const handleSubmit = (event) => {
