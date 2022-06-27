@@ -1,4 +1,5 @@
 import { useState, Fragment } from "react";
+import { Grid } from "react-loader-spinner";
 import Button from "./Button";
 import Input from "./Input";
 
@@ -46,7 +47,7 @@ const ReportForm = () => {
 					onClick={reportFormSubmitHandler}
 				/>
 			</form>
-			{isLoading && <p>Loading...</p>}
+			{isLoading && <div className='loading'><Grid color='white' ariaLabel="loading-indicator" /></div>}
 			{!isLoading && isFound && foundDialogBox}
 			{!isLoading && !isFound && <p>Not Found</p>}
 		</Fragment>

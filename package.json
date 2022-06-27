@@ -10,6 +10,7 @@
     "buffer": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.1.5",
     "react-map-gl": "^7.0.16",
     "react-router-dom": "^5.3.3",
     "react-router-hash-link": "^2.4.3",

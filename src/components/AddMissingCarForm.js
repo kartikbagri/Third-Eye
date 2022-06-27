@@ -5,6 +5,7 @@ import Button from "./Button";
 import axios from 'axios';
 import Webcam from "react-webcam";
 import {Buffer} from 'buffer';
+import { Grid } from "react-loader-spinner";
 
 const videoConstraints = {
     width: 1280,
@@ -126,8 +127,8 @@ const AddMissingCarForm = (props) => {
                     onClick={handleSubmit}
                     >Upload</button>}
             </form>
-            {isLoading && <p>Loading...</p>}
-            <div className={styles['extender']}/>
+            {isLoading && <div className='loading'><Grid color='white' ariaLabel="loading-indicator" /></div>}
+            {!isLoading && licensePlate && <div className={styles['license-plate']}>License Plate Number: <span className={styles['number']}>{String(licensePlate).toUpperCase()}</ span></div>}
             <p className={styles['note']}>To test Camera Feature, which will be used in CCTVs</p>
             {<Button
                 className={styles['btn']}
@@ -138,7 +139,7 @@ const AddMissingCarForm = (props) => {
             >
                 Camera
             </Button>}
-            
+    
             {openCam && <Webcam
                 audio={false}
                 height={520}
@@ -147,7 +148,6 @@ const AddMissingCarForm = (props) => {
                 width={1080}
                 videoConstraints={videoConstraints}
             />}
-            {!isLoading && licensePlate && <div className={styles['license-plate']}>License Plate Number: <span className={styles['number']}>{String(licensePlate).toUpperCase()}</ span></div>}
         </Fragment>
     )
 }

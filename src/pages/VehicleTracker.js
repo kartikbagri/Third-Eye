@@ -4,6 +4,7 @@ import AddMissingCarForm from "../components/AddMissingCarForm";
 import styles from "./VehicleTracker.module.css";
 import Button from "../components/Button";
 import axios from "axios";
+import { Grid } from "react-loader-spinner";
 
 const VehicleTracker = () => {
 	
@@ -41,7 +42,7 @@ const VehicleTracker = () => {
 			{!isLoading && error && <p className={styles['error']}>{error}</p>}
 			{!isLoading && !activeForm && foundData && <MapWithLocations data={foundData}/>}
 			{!isLoading && !activeForm && !foundData && <p className={styles['empty-locations']}>Car hasn't been detected but car added for Sherlock!</p>}
-			{isLoading && <p className={styles['loading']}>Loading...</p>}
+			{isLoading && <div className='loading'><Grid color='white' ariaLabel="loading-indicator" /></div>}
 			{!activeForm && <Button className={styles['btn']} onClick={() => setActiveForm(true)}>Add a missing car</Button>}
 		</div>
 

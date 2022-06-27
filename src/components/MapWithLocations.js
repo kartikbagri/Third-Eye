@@ -28,7 +28,7 @@ const MapWithLocations = (props) => {
     const [showDetails, setShowDetails] = useState(false);
     const [carDetails, setCarDetails] = useState(null);
 
-    const markerClickHandler = (event, carData) => {
+    const markerClickHandler = (carData) => {
         axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${carData.longitude},${carData.latitude}.json?access_token=${MAPBOX_TOKEN}`)
         .then(res => {
             const carDataWithAddress = {...carData, address: res.data.features[0].place_name};
@@ -58,7 +58,7 @@ const MapWithLocations = (props) => {
                         key={Math.random()}
                         latitude={carData.latitude}
                         longitude={carData.longitude}
-                        onClick={(event) => markerClickHandler(event, carData)}
+                        onClick={() => markerClickHandler(carData)}
                     >
                         <img style={{height: '60px'}} src='/images/marker.gif' alt='pin' />
                     </Marker>

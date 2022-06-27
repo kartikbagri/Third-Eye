@@ -4,7 +4,7 @@ import Input from "../components/Input";
 import AuthContext from '../context/auth-context';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
-
+import { Grid } from 'react-loader-spinner';
 
 const Login = () => {
 	const history = useHistory();
@@ -93,7 +93,7 @@ const Login = () => {
 				</form>
 			</div>
 			{!isLoading && error && <p className={styles['error']}>{error}</p>}
-			{isLoading && <p className={styles['loading']}>Loading...</p>}
+			{isLoading && <div className='loading'><Grid color='white' ariaLabel="loading-indicator" /></div>}
 		</div>
 	);
 };
