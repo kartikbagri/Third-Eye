@@ -35,7 +35,6 @@ const Signup = () => {
 			}
 		})
 		.then(data => {
-			console.log(data);
 			history.replace('/login');
 		})
 		.catch(err => {

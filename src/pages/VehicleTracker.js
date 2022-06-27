@@ -20,7 +20,6 @@ const VehicleTracker = () => {
 		formData.append("licensePlate", licensePlate);
 		axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars/find", formData)
 		.then(res => {
-			console.log(res.data.data);
 			return res.data.data
 		})
 		.then(data => {

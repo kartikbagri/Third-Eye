@@ -33,13 +33,12 @@ const AddMissingCarForm = (props) => {
         formData.append("photograph", blob);
         formData.append('latitude', 23)
         formData.append('longitude', 43)
-        console.log(formData)
         axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars", formData)
         .then(res => res.data)
         .then(data => {
-            console.log(data)
             const licensePlate = data.licensePlateNumber;
-            if(licensePlate) {
+            if(licensePlate.length>0) {
+                console.log(licensePlate);
                 setLicensePlate(licensePlate);
             } else {
                 setLicensePlate(null);

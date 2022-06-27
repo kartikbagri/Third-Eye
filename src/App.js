@@ -9,7 +9,6 @@ import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   const authContext = useContext(AuthContext);
-  console.log(authContext);
   return (
       <Switch>
         <Route path='/' exact><LandingPage /></Route>
