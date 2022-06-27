@@ -60,12 +60,16 @@ def getCars():
     data = cars.find({
         'licensePlateNumber': request.form['licensePlate']
     })
-    plate = []
+    results = []
     for car in data:
-        plate.append((car['latitude'], car['longitude']))
+        results.append({
+            'latitude': car['latitude'], 
+            'longitude': car['longitude'],
+            'timestamp': car['timestamp']
+        })
     return {
         'status': 'success',
-        'data': plate
+        'data': results
     }
 
 @app.route('/api/data', methods=['POST'])

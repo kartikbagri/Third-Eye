@@ -23,6 +23,7 @@ const VehicleTracker = () => {
 			return res.data.data
 		})
 		.then(data => {
+			console.log(data);
 			foundLocations = data.map(car => {
 				return [car[0], car[1]];
 			});
