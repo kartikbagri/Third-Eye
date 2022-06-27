@@ -1,0 +1,28 @@
+.info {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.info__car, .info__location {
+    flex: 1;
+}
+
+.title {
+    font-weight: normal;
+    font-size: 1rem;
+    color: rgb(182, 182, 182);
+    margin: 0;
+    padding: 10px 0;
+}
+
+.text {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 10px;
+}

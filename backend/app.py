@@ -63,6 +63,7 @@ def getCars():
     results = []
     for car in data:
         results.append({
+            'licensePlateNumber': car['licensePlateNumber'],
             'latitude': car['latitude'], 
             'longitude': car['longitude'],
             'timestamp': car['timestamp']

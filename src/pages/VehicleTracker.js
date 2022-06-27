@@ -9,13 +9,11 @@ const VehicleTracker = () => {
 	
 	const [activeForm, setActiveForm] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
-	const [locations, setLocations] = useState(['28.597713703326125', '77.04909737144587']);
+	const [foundData, setFoundData] = useState(null);
 	const [error, setError] = useState(null);
-
-	var foundLocations;
-
 	const addMissingCarHandler = (licensePlate) => {
 		setIsLoading(true);
+		setFoundData(null);
 		const formData = new FormData();
 		formData.append("licensePlate", licensePlate);
 		axios.post("https://third-eye-hackmanthan.herokuapp.com/api/cars/find", formData)
@@ -23,27 +21,27 @@ const VehicleTracker = () => {
 			return res.data.data
 		})
 		.then(data => {
-			console.log(data);
-			foundLocations = data.map(car => {
-				return [car[0], car[1]];
-			});
-			setLocations([...foundLocations]);
-		}).catch(err => {
+			setFoundData(data);
+		})
+		.catch(err => {
 			console.log(err);
+			setFoundData(null);
 			setError(err);
 		})
-		setIsLoading(false);
-		setActiveForm(false);
+		.finally(() => {
+			setIsLoading(false);
+			setActiveForm(false);
+		});
 	};
 
   return (
 		<div className={styles['container']}>
 			<h1 className={styles['title']}>Welcome to V-Trace</h1>
 			{!isLoading && activeForm && <AddMissingCarForm submitHandler={addMissingCarHandler} />}
-			{isLoading && <p className={styles['loading']}>Loading...</p>}
 			{!isLoading && error && <p className={styles['error']}>{error}</p>}
-			{!isLoading && !activeForm && <MapWithLocations locations={locations}/>}
-			{!isLoading && !activeForm && locations && locations.length===0 && <p className={styles['empty-locations']}>Car hasn't been detected but car added for Sherlock!</p>}
+			{!isLoading && !activeForm && foundData && <MapWithLocations data={foundData}/>}
+			{!isLoading && !activeForm && !foundData && <p className={styles['empty-locations']}>Car hasn't been detected but car added for Sherlock!</p>}
+			{isLoading && <p className={styles['loading']}>Loading...</p>}
 			{!activeForm && <Button className={styles['btn']} onClick={() => setActiveForm(true)}>Add a missing car</Button>}
 		</div>
 
