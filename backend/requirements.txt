@@ -5,3 +5,6 @@ requests
 gunicorn
 python-dotenv
 dnspython
+numpy
+face_recognition
+cmake

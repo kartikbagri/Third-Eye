@@ -35,7 +35,7 @@ const VehicleTracker = () => {
 		});
 	};
 
-  return (
+	return (
 		<div className={styles['container']}>
 			<h1 className={styles['title']}>Welcome to V-Trace</h1>
 			{!isLoading && activeForm && <AddMissingCarForm submitHandler={addMissingCarHandler} />}

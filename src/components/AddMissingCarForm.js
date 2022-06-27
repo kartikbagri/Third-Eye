@@ -118,7 +118,6 @@ const AddMissingCarForm = (props) => {
                         className={styles['form-input']}
                         type="file" id="file" 
                         accept=".jpg"
-                        multiple
                         onChange={handleFileChange}
                     />
                 </div>

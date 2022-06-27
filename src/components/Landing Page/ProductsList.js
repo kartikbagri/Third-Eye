@@ -12,8 +12,9 @@ const ProductsList = () => {
             </div>
             <div className={styles['product']}>
                 <img className={styles['product-image']} src='images/p-trace.png' alt='p-trace'/>
-                <h2 className={styles['product-title']}>P-TRACE</h2>
-                <p className={styles['text']}>Coming Soon</p>
+                {/* <h2 className={styles['product-title']}>P-TRACE</h2> */}
+                <Link to='/person-tracker' className={`${styles['product-title']} ${styles['available']}`}>P-TRACE</Link>
+                {/* <p className={styles['text']}>Coming Soon</p> */}
                 <p className={styles['product-description']}>Automated License Plate Recognition System for 
                     real time vehicle tracking using AI and Machine Learning</p>
             </div>

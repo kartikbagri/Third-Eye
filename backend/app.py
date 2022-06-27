@@ -5,6 +5,8 @@ import datetime
 import requests
 from werkzeug.utils import secure_filename
 import os
+import face_recognition
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +15,8 @@ client = MongoClient(os.environ['MONGODB_URI'])
 
 db = client.test_database
 cars = db.cars
+reports = db.reports
+persons = db.persons
 
 def findPlateNumbers():
     regions = ['in']
@@ -90,3 +94,86 @@ def postData():
 @app.route('/')
 def hello_world():
     return 'Hello, World! welcome to Third Eye!'
+
+def findEncodings():
+    image = face_recognition.load_image_file("latest.png")
+    face_encodings = face_recognition.face_encodings(image)
+    results = []
+    for face_encoding in face_encodings:
+        results.append(face_encoding)
+    print(results)
+    return results
+
+def findIfPresent(encoding):
+    all_persons = persons.find()
+    results = []
+    for person in all_persons:
+        if face_recognition.compare_faces([person['encoding']], encoding)[0]:
+            results.append({
+                'latitude': person['latitude'],
+                'longitude': person['longitude'],
+            })
+    return results
+
+@app.route('/api/reports', methods=['POST'])
+def postReport():
+    try:
+        photograph = request.files['photograph']
+        photograph.save(secure_filename('latest.png'))
+        encoding = findEncodings()
+        os.remove('latest.png')
+        encoding = encoding[0]
+        results = findIfPresent(encoding)
+        print(results)
+        personData = {
+            'name': request.form['name'],
+            'encoding': encoding.tolist()
+        }
+        reports.insert_one(personData)
+        return {
+            'data': results,
+            'status': 'success',
+            'message': 'Person added successfully'
+        }
+    except(Exception) as e:
+        return {
+            'status': 'error',
+            'message': str(e)
+        }
+
+def findReports(encoding):
+    all_reports = reports.find()
+    results = []
+    for report in all_reports:
+        if face_recognition.compare_faces([report['encoding']], encoding)[0]:
+            results.append({
+                'name': report['name']
+            })
+    return results
+
+@app.route('/api/persons', methods=['POST'])
+def postPerson():
+    try:
+        photograph = request.files['photograph']
+        photograph.save(secure_filename('latest.png'))
+        encodings = findEncodings()
+        os.remove('latest.png')
+        results = []
+        for encoding in encodings:
+            personData = {
+                'encoding': encoding.tolist(),
+                'latitude': request.form['latitude'],
+                'longitude': request.form['longitude'],
+            }
+            persons.insert_one(personData)
+            results.append(findReports(encoding))
+        return {
+            'data': results,
+            'status': 'success',
+            'message': 'Person(s) added successfully'
+        }
+    except(Exception) as e:
+        return {
+            'status': 'error',
+            'message': str(e)
+        }
