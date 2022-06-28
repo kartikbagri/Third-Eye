@@ -7,6 +7,7 @@ import { useContext } from "react";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
 import PersonTracker from "./pages/PersonTracker";
+import FaceDabbe from "./pages/faceDabbe";
 
 const App = () => {
   const authContext = useContext(AuthContext);
@@ -21,6 +22,7 @@ const App = () => {
         {!authContext.isAuthenticated && <Route path='/login'><Login /></Route>}
         {authContext.isAuthenticated && <Route path='/login'><Redirect to='/dashboard' /></Route>}
         {!authContext.isAuthenticated && <Route path='/signup'><Signup /></Route>}
+        <Route exact path='/faceDabbe' ><FaceDabbe /></Route>
         <Route path='*'>
           <Redirect to='/not-found' />
         </Route>
