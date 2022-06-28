@@ -45,7 +45,6 @@ const VehicleTracker = () => {
 			{isLoading && <div className='loading'><Grid color='white' ariaLabel="loading-indicator" /></div>}
 			{!activeForm && <Button className={styles['btn']} onClick={() => setActiveForm(true)}>Add a missing car</Button>}
 		</div>
-
 	)
 };
 
