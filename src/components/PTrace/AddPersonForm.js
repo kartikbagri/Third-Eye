@@ -1,18 +1,61 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useCallback, useEffect } from "react";
 import Input from "../Input";
 import Button from "../Button";
 import styles from "./AddPersonForm.module.css";
 import axios from "axios";
+import Webcam from "react-webcam";
 import { Grid } from "react-loader-spinner";
+import { Buffer } from 'buffer';
+
+const videoConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: { exact: "environment" }
+};
+
+var interval;
 
 const AddPersonForm = (props) => {
-
     const nameRef = useRef();
     const imageRef = useRef();
     const testingImgRef = useRef();
     const [isLoading, setIsLoading] = useState(false);
     const [isReportLoading, setIsReportLoading] = useState(false);
     const [foundDetails, setFoundDetails] = useState(null);
+    const [openCam, setOpenCam] = useState(false);
+    const webcamRef = useRef(null);
+
+    const capture = useCallback(() => {
+        const imageSrc = webcamRef.current.getScreenshot();
+        const data = imageSrc.toString().replace(/^data:image\/png;base64,/, "");
+        const buf = Buffer.from(data, 'base64');
+        const blob = new Blob([buf.buffer], {type: 'image/png'}); 
+        const formData = new FormData();
+        formData.append("photograph", blob);
+        formData.append('latitude', 23)
+        formData.append('longitude', 43)
+        axios.post("https://third-eye-hackmanthan.herokuapp.com/api/persons", formData)
+        .then(res => res.data.data)
+        .then(data => {
+            console.log(data);
+            setFoundDetails(data[0]);
+        })
+        .catch(err => {
+            setFoundDetails(null);
+            console.log(err)
+        })
+    },[webcamRef]);
+
+    useEffect(() => {
+        if(!openCam) {
+            clearInterval(interval);
+            return;
+        }
+        interval = setInterval(() => {
+            capture();
+        }, 3000);
+        
+    }, [openCam, capture])
 
     const reportSubmitHandler = (event) => {
         event.preventDefault();
@@ -103,10 +146,27 @@ const AddPersonForm = (props) => {
                 {isLoading && <div className="loading"><Grid color='white'/></div>}
             </form>
             {!isLoading && foundDetails && foundDetails.length>0 && <h3>Reports found</h3>}
-            {!isLoading && foundDetails && foundDetails.length>0 && foundDetails.map((detail) => <div>
+            {!isLoading && foundDetails && foundDetails.length>0 && foundDetails.map((detail) => <div key={Math.random()}>
                 <p className={styles['report-names']}>Name: {detail.name}</p>
             </div>)}
             {!isLoading && foundDetails && foundDetails.length===0 && <h3>No reports found</h3>}
+            <Button
+                className={styles['btn']}
+                type="submit"
+                onClick={() => setOpenCam((prevState) => {
+                    return !prevState;
+                })}
+            >
+                Camera
+            </Button>
+            {openCam && <Webcam
+                audio={false}
+                height={520}
+                ref={webcamRef}
+                screenshotFormat="image/png"
+                width={1080}
+                videoConstraints={videoConstraints}
+            />}
         </Fragment>
     )
 };

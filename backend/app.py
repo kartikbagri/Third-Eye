@@ -97,7 +97,7 @@ def hello_world():
 
 def findEncodings():
     image = face_recognition.load_image_file("latest.png")
-    face_encodings = face_recognition.face_encodings(image)
+    face_encodings = face_recognition.face_encodings(image, model='large')
     results = []
     for face_encoding in face_encodings:
         results.append(face_encoding)
@@ -107,7 +107,7 @@ def findIfPresent(encoding):
     all_persons = persons.find()
     results = []
     for person in all_persons:
-        if face_recognition.compare_faces([person['encoding']], encoding)[0]:
+        if face_recognition.compare_faces([person['encoding']], encoding, tolerance=0.5)[0]:
             results.append({
                 'latitude': person['latitude'],
                 'longitude': person['longitude'],

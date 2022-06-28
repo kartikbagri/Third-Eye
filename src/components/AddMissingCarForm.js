@@ -4,7 +4,7 @@ import styles from "./AddMissingCarForm.module.css";
 import Button from "./Button";
 import axios from 'axios';
 import Webcam from "react-webcam";
-import {Buffer} from 'buffer';
+import { Buffer } from 'buffer';
 import { Grid } from "react-loader-spinner";
 
 const videoConstraints = {
@@ -24,8 +24,7 @@ const AddMissingCarForm = (props) => {
     const licenseRef = useRef(null);
     
     const webcamRef = useRef(null);
-  const capture = useCallback(
-    () => {
+    const capture = useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         const data = imageSrc.toString().replace(/^data:image\/png;base64,/, "");
         const buf = Buffer.from(data, 'base64');
@@ -48,9 +47,7 @@ const AddMissingCarForm = (props) => {
         .catch(err => {
             console.log(err)
         })
-    },
-    [webcamRef]
-  );
+    },[webcamRef]);
 
     useEffect(() => {
         if(!openCam) {
@@ -129,7 +126,7 @@ const AddMissingCarForm = (props) => {
             {isLoading && <div className='loading'><Grid color='white' ariaLabel="loading-indicator" /></div>}
             {!isLoading && licensePlate && <div className={styles['license-plate']}>License Plate Number: <span className={styles['number']}>{String(licensePlate).toUpperCase()}</ span></div>}
             <p className={styles['note']}>To test Camera Feature, which will be used in CCTVs</p>
-            {<Button
+            <Button
                 className={styles['btn']}
                 type="submit"
                 onClick={() => setOpenCam((prevState) => {
@@ -137,7 +134,7 @@ const AddMissingCarForm = (props) => {
                 })}
             >
                 Camera
-            </Button>}
+            </Button>
     
             {openCam && <Webcam
                 audio={false}
