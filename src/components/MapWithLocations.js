@@ -48,7 +48,7 @@ const MapWithLocations = (props) => {
                         setViewport(viewport);
                     }}
                     onMove={evt => setViewport(evt.viewState)}
-                    mapStyle="mapbox://styles/mapbox/streets-v11"
+                    mapStyle="mapbox://styles/mapbox/dark-v10"
                 >
                 <FullscreenControl />
                 <GeolocateControl />
