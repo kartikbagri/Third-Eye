@@ -7,7 +7,11 @@ from werkzeug.utils import secure_filename
 import os
 import face_recognition
 import numpy as np
+from twilio.rest import Client
 
+account_sid = 'AC0f4445bb4529c3ccc71593a21f16887f'
+auth_token = '9f269d1b61d44e5927c884e518680d23'
+client = Client(account_sid, auth_token)
 app = Flask(__name__)
 CORS(app)
 
@@ -52,6 +56,12 @@ def postCars():
             'longitude': request.form['longitude'],
         }
         cars.insert_one(carData)
+        if(plateNumber):
+            client.messages.create(
+                body=f"Vehicle with license number {plateNumber} has been found at latitude: {request.form['latitude']} and longitude: {request.form['longitude']}.",
+                from_='+19897621465',
+                to='+919811297472'
+            )
     return {
         'licensePlateNumber': plateNumbers,
         'status': 'success',

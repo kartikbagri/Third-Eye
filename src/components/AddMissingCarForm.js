@@ -10,7 +10,7 @@ import { Grid } from "react-loader-spinner";
 const videoConstraints = {
     width: 1280,
     height: 720,
-    facingMode: { exact: "environment" }
+    facingMode: 'user'
 };
 
 var interval;

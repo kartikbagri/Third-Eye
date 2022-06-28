@@ -8,3 +8,4 @@ dnspython
 numpy
 face_recognition
 cmake
+twilio
