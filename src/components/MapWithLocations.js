@@ -20,8 +20,8 @@ const MapWithLocations = (props) => {
     useEffect(() => {
         setViewport((prevViewport) => ({
             ...prevViewport,
-            latitude: props.data? props.data[0].latitude: prevViewport.latitude,
-            longitude: props.data? props.data[0].longitude: prevViewport.longitude,
+            latitude: (props.data && props.data[0]) ? props.data[0].latitude: prevViewport.latitude,
+            longitude: (props.data && props.data[0]) ? props.data[0].longitude: prevViewport.longitude,
         }))
     }, [props])
 

@@ -10,7 +10,7 @@ import { Buffer } from 'buffer';
 const videoConstraints = {
     width: 1280,
     height: 720,
-    facingMode: { exact: "environment" }
+    facingMode: 'user'
 };
 
 var interval;
@@ -23,8 +23,8 @@ const AddPersonForm = (props) => {
     const [isReportLoading, setIsReportLoading] = useState(false);
     const [foundDetails, setFoundDetails] = useState(null);
     const [openCam, setOpenCam] = useState(false);
+    
     const webcamRef = useRef(null);
-
     const capture = useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         const data = imageSrc.toString().replace(/^data:image\/png;base64,/, "");
@@ -37,7 +37,6 @@ const AddPersonForm = (props) => {
         axios.post("https://third-eye-hackmanthan.herokuapp.com/api/persons", formData)
         .then(res => res.data.data)
         .then(data => {
-            console.log(data);
             setFoundDetails(data[0]);
         })
         .catch(err => {

@@ -97,7 +97,7 @@ def hello_world():
 
 def findEncodings():
     image = face_recognition.load_image_file("latest.png")
-    face_encodings = face_recognition.face_encodings(image, model='large')
+    face_encodings = face_recognition.face_encodings(image, model='cnn')
     results = []
     for face_encoding in face_encodings:
         results.append(face_encoding)

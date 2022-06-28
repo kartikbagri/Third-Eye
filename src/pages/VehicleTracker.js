@@ -41,7 +41,7 @@ const VehicleTracker = () => {
 			{!isLoading && activeForm && <AddMissingCarForm submitHandler={addMissingCarHandler} />}
 			{!isLoading && error && <p className={styles['error']}>{error}</p>}
 			{!isLoading && !activeForm && foundData && <MapWithLocations data={foundData}/>}
-			{!isLoading && !activeForm && !foundData && <p className={styles['empty-locations']}>Car hasn't been detected but car added for Sherlock!</p>}
+			{!isLoading && !activeForm && foundData && foundData.length === 0 && <p className={styles['empty-locations']}>Car hasn't been detected but car added for Sherlock!</p>}
 			{isLoading && <div className='loading'><Grid color='white' ariaLabel="loading-indicator" /></div>}
 			{!activeForm && <Button className={styles['btn']} onClick={() => setActiveForm(true)}>Add a missing car</Button>}
 		</div>
