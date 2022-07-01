@@ -144,6 +144,7 @@ const AddMissingCarForm = (props) => {
                 width={1080}
                 videoConstraints={videoConstraints}
             />}
+            <p className={styles['note']}>If you wish to see our alert system for license plate detection, we will get an SMS on our own number due to the constraints of non-paid account of Twilio. If you wish to get a screenshot of the SMS that we have received in real time, here is the contact number to reach out: +91-9811297472</p>
         </Fragment>
     )
 }
