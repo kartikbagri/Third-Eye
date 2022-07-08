@@ -1,7 +1,7 @@
 # Welcome to Third-Eye
 
 #### What is Third Eye?
-With just one system that is simple to use and intuitive for both the police authority and the public, _**Third eye**_ is a decentralised and distributed cutting-edge security protocol that uses deep learning and artificial intelligence to track motor vehicles and Criminals via a modern CCTV network using Automated License Plate Recognition and real-time GPS tracking.
+With just one system that is simple to use and intuitive for both the police authority and the public, _**Third eye**_ is a distributed cutting-edge security protocol that uses deep learning and artificial intelligence to track motor vehicles and Criminals via a modern CCTV network using Automated License Plate Recognition and Facial Recognition.
 
 Visit The [Third Eye Website](https://third-eye.vercel.app/) to get the feel of our security system.
 
