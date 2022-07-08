@@ -1,7 +1,4 @@
-# Third-Eye
-
-[![Youtube Video](https://img.youtube.com/vi/Lijxc6lu2zA/0.jpg)](https://www.youtube.com/watch?v=Lijxc6lu2zA)
-
+# Welcome to Third-Eye
 
 #### What is Third Eye?
 With just one system that is simple to use and intuitive for both the police authority and the public, _**Third eye**_ is a decentralised and distributed cutting-edge security protocol that uses deep learning and artificial intelligence to track motor vehicles and Criminals via a modern CCTV network using Automated License Plate Recognition and real-time GPS tracking.
@@ -22,3 +19,5 @@ Third-Eye was featured in multiple newspapers and articles on news websites<br>
 <img width="400" alt="Screenshot 2022-07-06 232938" src="https://user-images.githubusercontent.com/77344616/177614543-dde524b5-0d76-47ac-8732-29c479a42df6.png">
 
 Link to [Jantaserishta website](https://jantaserishta.com/local/chhattisgarh/hackmanthan-engineering-students-model-gets-first-prize-1339321) featuring Third-eye 
+
+[![Youtube Video](https://img.youtube.com/vi/Lijxc6lu2zA/0.jpg)](https://www.youtube.com/watch?v=Lijxc6lu2zA)
