@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# Welcome to Third-Eye
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### What is Third Eye?
+With just one system that is simple to use and intuitive for both the police authority and the public, _**Third eye**_ is a distributed cutting-edge security protocol that uses deep learning and artificial intelligence to track motor vehicles and Criminals via a modern CCTV network using Automated License Plate Recognition and Facial Recognition.
 
-## Available Scripts
+Visit The [Third Eye Website](https://third-eye.vercel.app/) to get the feel of our security system.
 
-In the project directory, you can run:
+This app was submitted as a part of the final presentation given by our team ([Rinav Gupta](https://github.com/Rinav07),[Vedansh Arun](https://github.com/VedanshArun) and [Kartik Bagri](https://github.com/kartikbagri)) in the country's first, one of a kind CyberSecurity Hackathon - _**Hackmanthan**_ organised by Chhattisgarh Police in collaboration with IIIT Naya Raipur.
 
-### `npm start`
+Our team secured the First Position in this Hackathon and were awarded a cash prize of 1100$ 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+View our [Final's Presenation](https://www.canva.com/design/DAFE55ekfR8/egzMBBoukxmzr5wuqyX5mw/view?utm_content=DAFE55ekfR8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink) here.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Third-Eye in News
 
-### `npm test`
+Third-Eye was featured in multiple newspapers and articles on news websites<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img width="400" alt="WhatsApp Image 2022-06-30 at 2 08 57 PM" src="https://user-images.githubusercontent.com/77344616/177614533-f6ac56eb-1004-4c80-946e-f23c438d350d.jpeg">
+<img width="400" alt="Screenshot 2022-07-06 232938" src="https://user-images.githubusercontent.com/77344616/177614543-dde524b5-0d76-47ac-8732-29c479a42df6.png">
 
-### `npm run build`
+Link to [Jantaserishta website](https://jantaserishta.com/local/chhattisgarh/hackmanthan-engineering-students-model-gets-first-prize-1339321) featuring Third-eye 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![Youtube Video](https://img.youtube.com/vi/Lijxc6lu2zA/0.jpg)](https://www.youtube.com/watch?v=Lijxc6lu2zA)
